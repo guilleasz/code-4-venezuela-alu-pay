@@ -22,7 +22,7 @@ export default class AddContact extends Component {
 
   handleSubmit = (e, formData, inputs) => {
     e.preventDefault();
-    alert(JSON.stringify(formData, null, 2));
+    // TODO: send request
   };
 
   handleErrorSubmit = (e, formData, errorInputs) => {
