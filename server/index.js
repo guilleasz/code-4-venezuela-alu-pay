@@ -1,11 +1,11 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const routes = require('./routes')
+const express = require("express");
+const bodyParser = require("body-parser");
+const routes = require("./routes");
 
-const app = express()
+const app = express();
 
+app.use(bodyParser.json());
 
-app.use(bodyParser.json())
-app.use(routes)
+app.use(routes);
 
-app.listen(3001, () => console.log('API LISTENING AT PORT 3001'))
+app.listen(3001, () => console.log("API LISTENING AT PORT 3001"));
