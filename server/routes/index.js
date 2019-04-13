@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const transactionsRoutes  = require('./transactions')
+const cardsRoutes = require('./cardsRoutes')
 
-
-router.get('/', (req, res) => res.send('Hellow World!'))
 router.use('/transactions', transactionsRoutes)
+router.use('/cards', cardsRoutes)
 
 module.exports = router
