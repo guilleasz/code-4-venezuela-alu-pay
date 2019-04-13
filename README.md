@@ -1,30 +1,68 @@
-<img src="https://raw.githubusercontent.com/code-for-venezuela/2019-april-codeathon/master/assets/alumnUSB.png" alt="AlumnUSB" width="100" />
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Available Scripts
 
-# Automating scholarship payments
+In the project directory, you can run:
 
-## Who we are
-AlumnUSB is a non-profit organization that raises funds for Universidad Simón Bolivar. It has several programs to help the university fulfill its academic mission, including sourcing goods (equipment for laboratories, classrooms, offices, and supplies) and providing grants in the form of scholarships and teaching awards. AlumnUSB is run by USB alumni volunteers around the world who volunteer their time.
+### `npm start`
 
-## Problem statement
-One of AlumnUSB's programs gives financial aid to students of the University with stellar performance. These transfers are made via [Uphold](https://uphold.com) since they handle identity verification and can guarantee that the money arrives directly to the intended recipient. This allows AlumnUSB to operate with transparency.
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-An AlumnUSB member must manually send transfers to all the grant recipients, a process that currently takes more than two hours every month. We would like a system that automates this process, as it will save a tremendous amount of human time and allow us to scale our operations.
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-## Challenge
+### `npm test`
 
-* Make a script that connects to the [Uphold API](https://uphold.com/en/developer/api) to automate AlumnUSB scholarship payments. You are free to define what format would take in the script as a parameter (csv, excel, json, etc). The important parameters are that you script needs to be able to parse are defined in [here](https://uphold.com/en/developer/api/documentation/#create-amp-commit-a-transaction)
-* Bonus 1: Make a frontend for this script and have an UI that AlumnUSB's admins can use to interact with the tool you are creating.
-* Bonus 2: Create a scheduler that automates the process of when and to whom send the financial aid.
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Skills needed
-1. Backend APIs
-2. Scripting
+### `npm run build`
 
-## Project Scope
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-* We believe this project can be done by 2 people focused on the backend (understanding uphold's API, actual building of script backend and documenting how to run/host the solution).
-* If you would also like to tackle the frontend, 3-4 people is recommended.
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
 
-## Project contact
-Gabriel Golczer, gabriel@alumnusb.org
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+
+### Analyzing the Bundle Size
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+
+### Making a Progressive Web App
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+
+### Advanced Configuration
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+
+### Deployment
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+
+### `npm run build` fails to minify
+
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
