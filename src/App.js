@@ -5,6 +5,10 @@ class App extends Component {
   render() {
     return <AppRouter />;
   }
+
+  login = () => {
+    console.log("Login");
+  };
 }
 
 export default App;
