@@ -6,6 +6,6 @@ exports.api = axios.create({
 })
 
 exports.setHeaders = function (req, res, next) {
-  api.defaults.headers.Authorization = req.headers.Authorization
+  exports.api.defaults.headers.Authorization = req.headers.Authorization
   next()
 }

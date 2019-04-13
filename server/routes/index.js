@@ -13,6 +13,7 @@ const CLIENT_ID = "960e78e5c052c35f465f60864fe0db42f01bd08c";
 const CLIENT_SECRET = "b55da43669a74c67955153a2ec5dc480098e7426";
 
 router.get("/login", (req, res) => {
+  console.log('LOGIN')
   res.redirect(`${UPHOLD_LOGIN_URL}&state=${UPHOLD_STATE}`);
 });
 router.get("/uphold/callback", async (req, res) => {
@@ -37,7 +38,7 @@ router.get("/uphold/callback", async (req, res) => {
 
   const credentials = response.data;
   if (credentials && credentials.access_token) {
-    res.json(credentials);
+    res.redirect(`localhost:3000/home?token=${credentials.access_token}`);
   } else {
     res.json({ error: true, errorMessage: "Error getting access-token" });
   }

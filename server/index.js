@@ -5,12 +5,14 @@ const { setHeaders } = require('./config/axios');
 const https = require("https");
 const http = require("http");
 const fs = require("fs");
+const cors = require('cors');
 const options = {
   key: fs.readFileSync("./client-key.pem"),
   cert: fs.readFileSync("./client-cert.pem")
 };
 const app = express();
 
+app.use(cors())
 app.use(bodyParser.json());
 app.use(setHeaders)
 app.use(routes);
