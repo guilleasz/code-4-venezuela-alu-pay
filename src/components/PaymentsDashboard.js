@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import s from './PaymentsDashboard.scss'
 import { fetchContacts } from '../redux/actions/contacts'
+import { fetchCards } from '../redux/actions/cards'
 
 const dictionary = {
   students: 'estudiantes',
@@ -22,6 +23,7 @@ class PaymentsDashboard extends React.Component {
 
   componentDidMount() {
     this.props.fetchContacts()
+    this.props.fetchCards()
   }
 
   render() {
@@ -65,8 +67,9 @@ const mapStateToProps = (state, ownProps) => ({
   entities: state.contacts[ownProps.match.params.type].length
 })
 
-const mapDispatchToProps = dispatch => ({
-  fetchContacts
+const mapDispatchToProps = () => ({
+  fetchContacts,
+  fetchCards,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PaymentsDashboard)
