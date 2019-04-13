@@ -6,12 +6,19 @@ function DashboardHeader(){
     return(     
             <header className={styles.dashboardHeaderContainer}>
                 <div className={styles.dashboardAdminTitle}>
-                    Admin Info
+                    <div className={styles.dashboardAdminTitleLeft}>
+                        <span>Alumn USB</span>
+                    </div>
+                    <div className={styles.dashboardAdminTitleRight}>
+                        <span>
+                            Inicio
+                        </span>
+                        <span>
+                            Admin ->
+                        </span>
+                    </div>
                 </div>
-                <h1>Pedro Perez {/* firstName lastName*/ }</h1>
-                <span>
-                    Balance: $100 {/* balances.total */}
-                </span>
+ 
             </header>
     )
 }

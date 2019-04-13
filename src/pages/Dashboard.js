@@ -7,9 +7,29 @@ function Dashboard(){
     return(
         <>     
             <DashboardHeader />
-                <div className={styles.dashboardContainer}>
-                    <h1>This is the Dashboard</h1>
+                <div className={styles.dashboardAmountContainer}>
+                    <div className={styles.dashboardAmount}>
+                        <span>Saldo disponible</span>
+                        <br/>
+                        <span>1000000$</span>
+                    </div>
+                    <div className={styles.dashboardAmount}>
+                        <span>Saldo pendiente</span>
+                        <br/>
+                        <span>1000000$</span>
+                    </div>
+                    <div className={styles.dashboardAmount}>
+                        <span>Saldo total</span>
+                        <br/>
+                        <span>1000000$</span>
+                    </div> 
                 </div>
+                <div className="dashboardCallToAction">
+                    <h1>Realizar pagos</h1>
+                    <button className={styles.dashboardBtn}>Estudiantes</button>
+                    <button className={styles.dashboardBtn}>Profesores</button>
+                </div>
+                
         </>  
     )
 }
