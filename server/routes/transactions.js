@@ -3,8 +3,15 @@ const axios = require('axios')
 
 
 router.post('/', (req, res) => {
+  if(
+    !req.body.destinations.length ||
+    !req.body.cardId ||
+    !req.body.amount
+  ) {
+    return res.status(403).send('Required params missing')
+  }
   const transactions  = req.body.destinations.map(destination => 
-    axios.post(`https://api.uphold.com/v0/me/cards/${req.body.cardId}/transactions?commit=true`,{
+    axios.post(`/me/cards/${req.body.cardId}/transactions?commit=true`,{
       denomination: {
         amount: req.body.amount,
         currency: 'USD',
