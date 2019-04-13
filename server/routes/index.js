@@ -1,5 +1,6 @@
-var express = require("express");
-var router = express.Router();
+const express = require("express");
+const router = express.Router();
+const transactionsRoutes = require("./transactions");
 const axios = require("axios");
 
 router.get("/login", (req, res) => {
@@ -8,6 +9,9 @@ router.get("/login", (req, res) => {
   );
 });
 router.get("/uphold/callback", (req, res) => {});
+
+router.get("/", (req, res) => res.send("Hellow World!"));
+router.use("/transactions", transactionsRoutes);
 
 router.get("/", (req, res) => res.send("Hellow World!"));
 
