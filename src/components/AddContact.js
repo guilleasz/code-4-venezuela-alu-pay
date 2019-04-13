@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import { ValidationForm, TextInput } from "react-bootstrap4-form-validation";
+import {
+  ValidationForm,
+  TextInput,
+  SelectGroup
+} from "react-bootstrap4-form-validation";
 import validator from "validator";
 
 export default class AddContact extends Component {
@@ -18,15 +22,11 @@ export default class AddContact extends Component {
 
   handleSubmit = (e, formData, inputs) => {
     e.preventDefault();
-    alert(JSON.stringify(formData, null, 2));
+    // TODO: send request
   };
 
   handleErrorSubmit = (e, formData, errorInputs) => {
     console.error(errorInputs);
-  };
-
-  matchPassword = value => {
-    return value && value === this.state.password;
   };
 
   render() {
@@ -57,13 +57,17 @@ export default class AddContact extends Component {
           </div>
           <div className="form-group">
             <label htmlFor="company">Company</label>
-            <TextInput
+            <SelectGroup
               name="company"
               id="company"
-              minLength="4"
               value={this.state.company}
-              onChange={this.handleChange}
-            />
+              required
+              errorMessage="Please select a company."
+              onChange={this.handleChange}>
+              <option value="">--- Please select ---</option>
+              <option value="teacher">Teacher</option>
+              <option value="student">Student</option>
+            </SelectGroup>
           </div>
           <div className="form-group">
             <label htmlFor="email">Email</label>
