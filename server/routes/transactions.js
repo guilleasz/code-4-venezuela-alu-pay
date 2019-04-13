@@ -4,7 +4,7 @@ const axios = require('axios')
 
 router.post('/', (req, res) => {
   const transactions  = req.body.destinations.map(destination => 
-    axios.post(`https://api.uphold.com/v0/me/cards/${req.body.cardId}/transactions?commit=true`,{
+    axios.post(`/me/cards/${req.body.cardId}/transactions?commit=true`,{
       denomination: {
         amount: req.body.amount,
         currency: 'USD',

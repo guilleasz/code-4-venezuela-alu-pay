@@ -2,7 +2,7 @@ const router = require('express').Router()
 const axios = require('axios')
 
 router.get('/', (req, res) => {
-  axios.get('https://api.uphold.com/v0/me/cards')
+  axios.get('/me/cards')
     .then(({ data }) => res.send(data))
 })
 
