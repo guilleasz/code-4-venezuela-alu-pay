@@ -1,5 +1,5 @@
 import { SET_CONTACTS } from '../constants'
-import axios from 'axios';
+import api from '../../config/api';
 
 export const setContacts = contacts => ({
   type: SET_CONTACTS,
@@ -7,5 +7,5 @@ export const setContacts = contacts => ({
 })
 
 export const fetchContacts = () => dispatch => 
-  axios.get('/contacts')
+  api.get('/contacts')
     .then(({ data }) => dispatch(setContacts(data)))
