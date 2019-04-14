@@ -1,9 +1,13 @@
 const router = require('express').Router()
-const axios = require('axios')
+const { api } = require('../config/axios')
 
 router.get('/', (req, res) => {
-  axios.get('/me/cards')
+  api.get('/me/cards')
     .then(({ data }) => res.send(data))
+    .catch((err) => {
+      res.status(err.response.status)
+      res.send(err.response.data)
+    })
 })
 
 module.exports = router

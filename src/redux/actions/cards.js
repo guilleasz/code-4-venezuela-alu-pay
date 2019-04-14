@@ -1,5 +1,5 @@
 import { SET_CARDS } from '../constants'
-import axios from 'axios';
+import api from '../../config/api';
 import { dispatch } from 'rxjs/internal/observable/range';
 
 export const setCards = cards => ({
@@ -8,5 +8,5 @@ export const setCards = cards => ({
 }) 
 
 export const fetchCards = () =>
-  axios.get('/cards')
+  api.get('/cards')
     .then(({ data }) => dispatch(setCards(data)))

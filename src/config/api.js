@@ -1,8 +1,9 @@
-const axios = require('axios')
-const store = require('../redux/store')
-const API_HOST = 'localhost:3002'
+import axios from 'axios'
+import store from '../redux/store'
 
-export const api = axios.create({
+const API_HOST = 'http://localhost:3001'
+
+const api = axios.create({
   baseURL: API_HOST,
 });
 
@@ -12,3 +13,6 @@ api.interceptors.request.use((request) => {
 }, (error) => {
   return Promise.reject(error);
 });
+
+
+export default api

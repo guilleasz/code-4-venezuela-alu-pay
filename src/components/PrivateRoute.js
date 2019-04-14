@@ -4,15 +4,15 @@ import { Route, Redirect } from "react-router-dom";
 
 class PrivateRoute extends React.Component {
   render() {
-    const { component: Component, authenticated, ...rest } = this.props;
+    const { component: Component, token, ...rest } = this.props;
     return (
       <Route
         {...rest}
         render={props =>
-          authenticated.isLoggedIn ? (
+          token ? (
             <Component {...props} />
           ) : (
-            <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+            <Redirect to={{ pathname: "/login", state: { from: props.location } }} />
           )
         }
       />
@@ -20,8 +20,8 @@ class PrivateRoute extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  authenticated: state.authentication
+const mapStateToProps = ({ token }) => ({
+  token
 });
 
 export default connect(mapStateToProps)(PrivateRoute);
