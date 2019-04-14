@@ -1,0 +1,65 @@
+.container {
+  font-family: OpenSans;
+  background-color: #f4f4f4;
+  padding: 30px;
+}
+.title {
+  font-size: 24px;
+  font-weight: 600;
+}
+.subHeader {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+
+  .entity {
+    background-color: #f57423;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-right: 20px;
+    font-size: 24px;
+  }
+  .editList {
+    color: #000;
+    text-decoration: underline;
+    font-size: 18px;
+  } 
+}
+
+.row {
+  display: flex;
+  margin-top: 10px;
+  padding: 20px 10px;
+  justify-content: space-around;
+  text-align: center;
+  background-color: #fff;
+  border-radius:10px;
+  box-shadow: 0 -2px 8px 0 rgba(0, 0, 0, 0.2);
+  align-items: center;
+  
+  .label {
+    font-size: 18px;
+    margin-bottom: 10px
+  }
+  .value {
+    font-size: 24px;
+    font-weight: 600;
+
+  }
+
+  .editValue {
+    border: 1px solid #8e8e93;
+    border-radius: 10px;
+    padding: 10px;
+    margin-left: 5px;
+  }
+
+  .transfer {
+    border-radius: 10px;
+    background-color: #386631;
+    padding: 10px;
+    color: #FFF;
+    font-size: 24px;
+  }
+}

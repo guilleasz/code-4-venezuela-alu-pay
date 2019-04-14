@@ -1,24 +1,102 @@
-.dashboardAmountContainer {
-    background-color: rgb(243, 243, 243);
-    height: 15vh;
-    width: 100vw;
+
+.dashboardContainer {
     display:flex;
     align-items: center;
     justify-content: center;
+    flex-flow: column;
+    width: 100vw;
+    padding: 3rem;
+    background-color: #f4f4f4;
+}
+.dashboardAmountContainer {
+    background-color: #386631;
+    height: 120px;
+    width: 75vw;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #fff;
+    border-radius: 10px;
 }
 .dashboardAmount {
-    padding-right: 4rem;
+    display:flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 60px;
+}
+.dashboardAmount:nth-child(2) > span:nth-child(1) {
+    font-size: 18px;
+    font-weight: 600;
+}
+.dashboardAmount:nth-child(2) > span:nth-child(2) {
+    font-size: 22px;
+    font-weight: 400;
+}
+.dashboardAmount > span:nth-child(3) {
+    font-size: 30px;
+    font-weight: 600;
+}
+.dashboardBtn {
+    width: 378px;
+    height: 120px;
+    color: rgb(255, 255, 255);
+    border-radius: 3%;
+    border: none;
+    margin-left: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 -2px 8px 0 rgba(0, 0, 0, 0.2);
+    font-size: 26px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 
-.dashboardBtn {
-    margin-left: 2rem;
-    height: 3rem;
-    width: 5rem;
-    border: none;
-    color: rgb(29, 29, 29);
-    background-color: rgb(255, 217, 0);
-    border-radius: 15%;
-}
 .dashboardBtn:hover {
-    background-color: rgb(255, 228, 75);
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+
+.dashboardBtn:nth-child(1) {
+    background-color: hsl(23, 91%, 55%);
+}
+.dashboardBtn:nth-child(2) {
+    background-color: hsl(43, 94%, 54%);
+
+}
+.dashboardBtn:nth-child(1):hover {
+    background-color: hsl(23, 91%, 40%);
+}
+.dashboardBtn:nth-child(2):hover {
+    background-color: hsl(43, 94%, 39%);
+}
+.dashboardCTAWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    width: 100vw;
+    
+}
+.dashboardCTA_align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+.dashboardCTA_align > h1{
+    font-size: 30px;
+    font-weight: 600;
+    padding-bottom: 1.5rem;
+}
+.dashboardCTA_align_row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
 }

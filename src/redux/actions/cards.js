@@ -1,11 +1,11 @@
 import { SET_CARDS } from '../constants'
-import api from '../../config/api';
+import uphold from '../../uphold-sdk';
 
 export const setCards = cards => ({
   type: SET_CARDS,
   cards
 }) 
 
-export const fetchCards = () => (dispatch) =>
-  api.get('/cards')
-    .then(({ data }) => dispatch(setCards(data)))
+export const fetchCards = () => dispatch =>
+  uphold.getCards()
+    .then(({ items }) => dispatch(setCards(items)))
