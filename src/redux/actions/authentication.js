@@ -7,7 +7,8 @@ export const setLogin = isLoggedIn => ({
   isLoggedIn
 });
 
-export const logout = () => dispatch => {
+export const logout = () => async dispatch => {
+  await uphold.logout();
   dispatch(setUser());
   dispatch(setLogin(false));
 };
