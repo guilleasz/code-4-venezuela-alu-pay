@@ -31,7 +31,7 @@ export default class AddContact extends Component {
 
   render() {
     return (
-      <div className="col-8">
+      <div className="col">
         <ValidationForm
           onSubmit={this.handleSubmit}
           onErrorSubmit={this.handleErrorSubmit}>
