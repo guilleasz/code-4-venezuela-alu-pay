@@ -12,17 +12,17 @@ function Dashboard(){
                     <div className={styles.dashboardAmount}>
                         <span>SALDO TOTAL</span>
 
-                        <span>$15.00 USD</span>
+                        <span>USD $15.00 </span>
                     </div>
                     <div className={styles.dashboardAmount}>
                         <span>SALDO DISPONIBLE</span>
 
-                        <span>$10.00 USD</span>
+                        <span>USD $10.00 </span>
                     </div>
                     <div className={styles.dashboardAmount}>
                         <span>SALDO PENDIENTE</span>
      
-                        <span>$5.00 USD</span>
+                        <span>USD $5.00 </span>
                     </div> 
  
                 </div>
