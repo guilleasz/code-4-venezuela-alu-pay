@@ -1,0 +1,27 @@
+.HeaderContainer {
+    height: 90px;
+    background-color: #ffffff;
+}
+.AdminTitleRight {
+    display:flex;
+    justify-content: flex-end;
+    width: 80%;
+}
+.AdminTitleRight {
+    font-weight: 600;
+}
+.AdminTitleLeft {
+    padding-left: 2rem;
+    align-self: flex-start;
+    
+}
+.AdminTitle{
+    display: flex;
+    align-items: center;
+}
+.AdminTitleRight > span {
+    padding-left: 2rem;
+}
+.dashboardContainer span {
+    font-size: 18px;  
+}

@@ -25,11 +25,7 @@ class Home extends React.Component {
     if (this.state.loading) return null
     return (
       isLoggedIn ?
-        <div className="d-flex flex-column justify-content-between container-page">
-          <div className="mb-4 mt-4 container">
-            <Dashboard />
-          </div>
-        </div>
+          <Dashboard />
       : <Redirect to='/login' />
     );
   }
