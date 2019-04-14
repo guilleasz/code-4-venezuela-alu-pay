@@ -1,17 +1,41 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import {
+  ValidationForm,
+  TextInput,
+  SelectGroup
+} from "react-bootstrap4-form-validation";
 
 import s from './ConfirmTransaction.module.css';
 import { fetchCards } from '../redux/actions/cards';
 
 class ConfirmTransaction extends Component {
 
-  componentDidMount() {
-    this.props.fetchCards();
+  state = {
+    success: null,
+    loading: false,
+    cardSelected: null
+  }
+
+  componentDidMount = () => {
+    this.props.fetchCards()
+      .then(() => this.setState({ cardSelected: this.props.cards[0].id }));
+  }
+
+  handleCardChange = (e) => {
+    this.setState({
+      cardSelected: e.target.value
+    })
+  }
+
+  confirmTransaction = () => {
+    this.props.transfer(this.state.cardSelected)
+
   }
 
   render() {
-    const { numberOfStudents, amount } = this.props
+    const { numberOfStudents, amount, cards } = this.props;
+    const { cardSelected } = this.state;
     return (
       <div className={s.container}>
         <div className={s.header}>REALIZAR TRANSFERENCIA</div>
@@ -29,9 +53,34 @@ class ConfirmTransaction extends Component {
         </div>
 
         <div className={s.cardSelection}>
-          <div>Elegir Tarjeta</div>
-          <div className={s.dropdown}></div>
+          <label>Elegir Tarjeta</label>
+          <div className={s.dropdown}>
+            <ValidationForm>
+              <SelectGroup
+                name="card"
+                id="card"
+                value={cardSelected}
+                required errorMessage="Please select a color."
+                onChange={this.handleCardChange}
+              >
+                {cards.map(card => (
+                  <option
+                    key={card.id}
+                    value={card.id}
+                  >
+                    {card.label} - $ {card.available}
+                  </option>
+                ))}
+              </SelectGroup>
+            </ValidationForm>
+          </div>
         </div>
+
+        <div className={s.warning}>
+          Advertencia: esta transferencia no puede ser revertida o deshacerse
+        </div>
+
+        <button class={`${s.button} ${s.confirm}`} onClick={this.confirmTransaction}>confirm</button>
       </div>
     )
   }

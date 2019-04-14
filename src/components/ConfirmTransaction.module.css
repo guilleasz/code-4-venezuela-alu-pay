@@ -44,5 +44,30 @@
 .cardSelection {
   display: flex;
   justify-content: space-between;
-  margin: 0 30px;
+  margin: 50px 30px;
+}
+
+.cardSelection label {
+  padding: 10px;
+}
+
+.cardSelection .dropdown {
+  width: 290px;
+  color: green;
+}
+
+.cardSelection .dropdown option {
+  text-align: right;
+  width: 290px;
+}
+
+.button {
+  width: 180px;
+  height: 60px;
+  border-radius: 10px;
+}
+
+.warning {
+  margin-bottom: 20px;
+  font-size: 12px;
 }

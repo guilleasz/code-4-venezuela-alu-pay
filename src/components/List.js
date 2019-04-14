@@ -6,7 +6,6 @@ const List = props => {
   const { actors } = props;
   return (
     <ListGroup>
-      <ConfirmTransaction amount={35} numberOfStudents={100} />
       {actors.map(actor => (
         <ListGroupItem>{actor}</ListGroupItem>
       ))}
