@@ -1,0 +1,48 @@
+.container {
+  width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  height: 500px;
+  border: 1px solid black;
+}
+
+.header {
+  font-size: 18px;
+  margin: 30px;
+  font-weight: 500;
+}
+
+.amount {
+  margin-bottom: 20px;
+  color: #386631;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.about {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  width: 310px;
+}
+
+.info {
+  margin: 12px 23px;
+}
+
+.info p {
+  display: inline-block;
+  width: 180px;
+  margin: 0;
+}
+
+.info span {
+  font-weight: 500;
+}
+
+.cardSelection {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 30px;
+}
