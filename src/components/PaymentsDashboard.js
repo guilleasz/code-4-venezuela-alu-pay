@@ -32,7 +32,8 @@ class PaymentsDashboard extends React.Component {
     const entity = dictionary[match.params.type]
     return (
       <div>
-        <h1 className={s.title}>{entity.toUpperCase()}</h1>
+        <h1 className={s.title}>REALIZAR TRANSFERENCIAS</h1>
+        <h2 className={s.entity}>{entity.toUpperCase()}</h2>
         <Link className={s.editList} to={`/list/${match.params.type}`}>Editar lista</Link>
         <div className={s.row}>
           <div className={s.controller}>
@@ -67,9 +68,9 @@ const mapStateToProps = (state, ownProps) => ({
   entities: state.contacts[ownProps.match.params.type].length
 })
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = {
   fetchContacts,
   fetchCards,
-})
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(PaymentsDashboard)
