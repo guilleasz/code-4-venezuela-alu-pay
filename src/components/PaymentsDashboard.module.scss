@@ -1,7 +1,6 @@
 .container {
-  font-family: OpenSans;
   background-color: #f4f4f4;
-  padding: 30px;
+  padding: 0 12rem 0 12rem;
 }
 .title {
   font-size: 24px;
@@ -24,6 +23,7 @@
     color: #000;
     text-decoration: underline;
     font-size: 18px;
+    font-weight: 600;
   } 
 }
 
@@ -37,6 +37,7 @@
   border-radius:10px;
   box-shadow: 0 -2px 8px 0 rgba(0, 0, 0, 0.2);
   align-items: center;
+  height: 175px; 
   
   .label {
     font-size: 18px;
@@ -61,5 +62,12 @@
     padding: 10px;
     color: #FFF;
     font-size: 24px;
+    border: none;
+    width: 205px;
+    height: 60px;
+    justify-self: flex-end;
   }
+}
+.row > div:nth-child(4){
+  align-self: flex-end;
 }
