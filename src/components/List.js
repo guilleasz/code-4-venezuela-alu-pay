@@ -1,5 +1,6 @@
 import React from "react";
 import { ListGroup, ListGroupItem } from "reactstrap";
+import ConfirmTransaction from "./ConfirmTransaction";
 
 const List = props => {
   const { actors } = props;

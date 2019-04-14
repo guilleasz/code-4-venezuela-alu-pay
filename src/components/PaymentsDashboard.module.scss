@@ -56,6 +56,14 @@
     margin-left: 5px;
   }
 
+  .editValueInput {
+    width: 90px;
+    border-radius: 10px;
+    border: 1px solid #8e8e93;
+    padding: 6px;
+    margin-right: 5px;
+  }
+
   .transfer {
     border-radius: 10px;
     background-color: #386631;
@@ -66,6 +74,10 @@
     width: 205px;
     height: 60px;
     justify-self: flex-end;
+
+    &:disabled {
+      opacity: 0.4;
+    }
   }
 }
 .row > div:nth-child(4){

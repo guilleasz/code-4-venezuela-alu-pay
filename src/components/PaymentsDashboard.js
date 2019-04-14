@@ -8,6 +8,11 @@ import Header from '../components/Header'
 import s from './PaymentsDashboard.module.scss'
 import DashboardAmount from '../components/DashboardAmount'
 import editIcon from '../components/icons/pencil.svg'
+import ModalComponent from './ModalComponent'
+import ConfirmTransaction from './ConfirmTransaction'
+import okIcon from '../components/icons/ok.svg'
+import cancelIcon from '../components/icons/cancel.svg'
+
 const dictionary = {
   students: 'estudiantes',
   professors: 'profesores'
@@ -22,7 +27,10 @@ class PaymentsDashboard extends React.Component {
 
   state = {
     value: values[this.props.match.params.type],
-    editValue: false
+    editValue: false,
+    openModal: false,
+    oldValue: values[this.props.match.params.type],
+    isEditing: false
   }
 
   componentDidMount() {
@@ -37,12 +45,51 @@ class PaymentsDashboard extends React.Component {
       amount: value,
       currency: 'USD',
     }
-    transfer(contacts, body, cardId)
+
+    return transfer(contacts, body, cardId)
+  }
+
+  openModal = () => {
+    this.setState({
+      openModal: true
+    })
+  }
+
+  closeModal = () => {
+    this.setState({
+      openModal: false
+    })
+  }
+
+  editValue = () => {
+    this.setState({
+      isEditing: true
+    })
+  }
+
+  handleValueChange = (e) => {
+    this.setState({
+      value: e.target.value
+    })
+  }
+
+  confirmValue = () => {
+    this.setState({
+      isEditing: false,
+      oldValue: this.state.value
+    })
+  }
+
+  cancelValue = () => {
+    this.setState({
+      isEditing: false,
+      value: this.state.oldValue
+    })
   }
 
   render() {
     const { match, contacts } = this.props
-    const { value, editValue } = this.state
+    const { value, isEditing, openModal } = this.state
     const entity = dictionary[match.params.type]
     return (
       <>
@@ -67,10 +114,14 @@ class PaymentsDashboard extends React.Component {
               </div>
               <div className={s.value}>
                 USD $
-                {!editValue ?
-                  <span className={s.editValue}>{value} <img src={editIcon} alt="Edit Icon"/></span>
+                {!isEditing ?
+                  <span className={s.editValue}>{value} <img onClick={this.editValue} src={editIcon} alt="Edit Icon"/></span>
                 :
-                  <input className={s.editValueInput} value={value} />
+                  <span>
+                    <input className={s.editValueInput} value={value} onChange={this.handleValueChange} />
+                    <img src={okIcon} onClick={this.confirmValue} alt="Accept Value" />
+                    <img src={cancelIcon} onClick={this.cancelValue} alt="Cancel Value" />
+                  </span>
                 }
               </div>
   
@@ -82,10 +133,24 @@ class PaymentsDashboard extends React.Component {
               <div className={s.value}>${contacts.length * value} USD</div>
             </div>
             <div className={s.controller}>
-              <button className={s.transfer}>Transferir</button> 
+              <button
+                disabled={isEditing}
+                onClick={this.openModal}
+                className={s.transfer}
+              >
+                Transferir
+              </button> 
             </div>
           </div>
         </div>
+        <ModalComponent
+          open={openModal}
+          component={ConfirmTransaction}
+          transfer={this.startTransfer}
+          amount={value}
+          numberOfTransf={contacts.length}
+          close={this.closeModal}
+        />
       </>
     )
   }
