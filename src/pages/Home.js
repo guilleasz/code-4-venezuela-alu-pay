@@ -1,13 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
-import Login from "../components/Login";
+import { Redirect } from 'react-router'
 import Dashboard from "./Dashboard";
+import { setToken } from '../redux/actions/authentication'
 
-const Home = props => {
-  const {
-    authenticated: { isLoggedIn }
-  } = props;
-  if (isLoggedIn) {
+class Home extends React.Component {
+
+  componentDidMount() {
+    const { location, setToken } = this.props
+    const query = new URLSearchParams(location.search)
+    setToken(query.get('token'))
+  }
+
+  render(){
+  const { token } = this.props;
+  if (token) {
     return (
       <div className="d-flex flex-column justify-content-between container-page">
         <div className="mb-4 mt-4 container">
@@ -16,11 +23,16 @@ const Home = props => {
       </div>
     );
   }
-  return <Login />;
+  return <Redirect to='/login' />;
+  }
 };
 
 const mapStateToProps = state => ({
-  authenticated: state.authentication
+  token: state.token
 });
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = () => ({
+  setToken
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

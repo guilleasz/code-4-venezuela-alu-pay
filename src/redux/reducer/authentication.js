@@ -1,16 +1,11 @@
 import { LOG_IN } from "../constants";
 
-const initialState = {
-  isLoggedIn: true
-};
+const initialState = localStorage.getItem('token')
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case LOG_IN:
-      return {
-        ...state,
-        isLoggedIn: action.token
-      };
+      return action.token
     default:
       return state;
   }

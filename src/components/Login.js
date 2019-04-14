@@ -1,25 +1,22 @@
 import React from "react";
+import { connect } from 'react-redux'
 import styles from "./Login.module.css";
-import { connect } from "react-redux";
-import { fetchAuthentication } from "../redux/actions/authentication";
+import { Redirect } from "react-router-dom";
 
-function Login(props) {
-  return (
-    <div className={styles.btnContainer}>
-      <a href="#">
-        <button className={styles.btn} onClick={props.fetchAuthentication}>
-          Login
-        </button>
-      </a>
-    </div>
-  );
+
+const Login = ({ token }) => {
+  if (!token) {
+    return (
+      <div className={styles.btnContainer}>
+        <a href="http://localhost:3001/login"><button className={styles.btn}>Login</button></a>
+      </div>
+    );
+  }
+  return <Redirect to='/' /> 
 }
 
-const mapDispatchToProps = () => ({
-  fetchAuthentication
-});
+const mapDispatchToProps = ({ token }) => ({
+  token
+})
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Login);
+export default connect(mapDispatchToProps)(Login)

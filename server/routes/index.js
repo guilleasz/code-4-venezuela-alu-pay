@@ -38,7 +38,7 @@ router.get("/uphold/callback", async (req, res) => {
 
   const credentials = response.data;
   if (credentials && credentials.access_token) {
-    res.redirect(`http://localhost:3000/home?token=${credentials.access_token}`);
+    res.redirect(`http://localhost:3000/?token=${credentials.access_token}`);
   } else {
     res.json({ error: true, errorMessage: "Error getting access-token" });
   }
