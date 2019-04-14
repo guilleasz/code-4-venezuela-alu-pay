@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import s from './PaymentsDashboard.scss'
 import { fetchContacts } from '../redux/actions/contacts'
 import { fetchCards } from '../redux/actions/cards'
+import { transfer } from '../redux/actions/transfer'
+import s from './PaymentsDashboard.module.scss'
 
 const dictionary = {
   students: 'estudiantes',
@@ -18,7 +19,8 @@ const values = {
 class PaymentsDashboard extends React.Component {
 
   state = {
-    value: values[this.props.match.params.type]
+    value: values[this.props.match.params.type],
+    editValue: false
   }
 
   componentDidMount() {
@@ -26,37 +28,56 @@ class PaymentsDashboard extends React.Component {
     this.props.fetchCards()
   }
 
+  startTransfer = (cardId) => {
+    const { transfer, contacts } = this.props
+    const { value } = this.state 
+    const body = {
+      amount: value,
+      currency: 'USD',
+    }
+    transfer(contacts, body, cardId)
+  }
+
   render() {
-    const { match, entities } = this.props
-    const { value } = this.state
+    const { match, contacts } = this.props
+    const { value, editValue } = this.state
     const entity = dictionary[match.params.type]
     return (
-      <div>
+      <div className={s.container}>
         <h1 className={s.title}>REALIZAR TRANSFERENCIAS</h1>
-        <h2 className={s.entity}>{entity.toUpperCase()}</h2>
-        <Link className={s.editList} to={`/list/${match.params.type}`}>Editar lista</Link>
+        <div className={s.subHeader}>
+          <h2 className={s.entity}>{entity.toUpperCase()}</h2>
+          <Link className={s.editList} to={`/list/${match.params.type}`}>Editar lista de contactos</Link>
+        </div>
         <div className={s.row}>
           <div className={s.controller}>
             <div className={s.label}>
               Cantidad de {entity}
             </div>
-            <div className={s.value}>{entities}</div>
+            <div className={s.value}>{contacts.length}</div>
           </div>
           <div className={s.controller}>
             <div className={s.label}>
-              Monto de Pago
+              Monto de la beca
             </div>
-            <div className={s.value}>${value} USD</div>
-            <div className={s.editValue}>Cambiar</div>
+            <div className={s.value}>
+              USD $
+              {!editValue ?
+                <span className={s.editValue}>{value}</span>
+              :
+                <input className={s.editValueInput} value={value} />
+              }
+            </div>
+ 
           </div>
           <div className={s.controller}>
             <div className={s.label}>
-              Total
+              Total de dinero a transferir
             </div>
-            <div className={s.value}>${entities * value} USD</div>
+            <div className={s.value}>${contacts.length * value} USD</div>
           </div>
           <div className={s.controller}>
-            <button>Realizar Pago</button> 
+            <button className={s.transfer}>Transferir</button> 
           </div>
         </div>
       </div>
@@ -65,12 +86,13 @@ class PaymentsDashboard extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  entities: state.contacts[ownProps.match.params.type].length
+  contacts: state.contacts[ownProps.match.params.type]
 })
 
 const mapDispatchToProps = {
   fetchContacts,
   fetchCards,
+  transfer,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PaymentsDashboard)
