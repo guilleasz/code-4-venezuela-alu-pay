@@ -30,22 +30,21 @@ class ConfirmTransaction extends Component {
 
   confirmTransaction = () => {
     this.props.transfer(this.state.cardSelected)
-
   }
 
   render() {
-    const { numberOfStudents, amount, cards } = this.props;
+    const { numberOfTransf, amount, cards } = this.props;
     const { cardSelected } = this.state;
     return (
       <div className={s.container}>
         <div className={s.header}>REALIZAR TRANSFERENCIA</div>
         <div className={s.amount}>
-          USD $ {parseFloat(numberOfStudents * amount).toLocaleString('es')}
+          USD $ {parseFloat(numberOfTransf * amount).toLocaleString('es')}
         </div>
 
         <div className={s.about}>
           <div className={s.info}>
-            <p>Cantd de becas</p><span>{numberOfStudents}</span>
+            <p>Cantd de becas</p><span>{numberOfTransf}</span>
           </div>
           <div className={s.info}>
             <p>Valor de las becas</p><span>USD ${amount}</span>

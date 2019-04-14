@@ -8,6 +8,9 @@ import Header from '../components/Header'
 import s from './PaymentsDashboard.module.scss'
 import styles from '../pages/Dashboard.module.css'
 import editIcon from '../components/icons/pencil.svg'
+import ModalComponent from './ModalComponent'
+import ConfirmTransaction from './ConfirmTransaction'
+
 const dictionary = {
   students: 'estudiantes',
   professors: 'profesores'
@@ -22,7 +25,8 @@ class PaymentsDashboard extends React.Component {
 
   state = {
     value: values[this.props.match.params.type],
-    editValue: false
+    editValue: false,
+    openModal: false,
   }
 
   componentDidMount() {
@@ -37,12 +41,25 @@ class PaymentsDashboard extends React.Component {
       amount: value,
       currency: 'USD',
     }
+
     transfer(contacts, body, cardId)
+  }
+
+  openModal = () => {
+    this.setState({
+      openModal: true
+    })
+  }
+
+  closeModal = () => {
+    this.setState({
+      openModal: false
+    })
   }
 
   render() {
     const { match, contacts } = this.props
-    const { value, editValue } = this.state
+    const { value, editValue, openModal } = this.state
     const entity = dictionary[match.params.type]
     return (
       <>
@@ -97,10 +114,18 @@ class PaymentsDashboard extends React.Component {
               <div className={s.value}>${contacts.length * value} USD</div>
             </div>
             <div className={s.controller}>
-              <button className={s.transfer}>Transferir</button> 
+              <button onClick={this.openModal} className={s.transfer}>Transferir</button> 
             </div>
           </div>
         </div>
+        <ModalComponent
+          open={openModal}
+          component={ConfirmTransaction}
+          transfer={this.startTransfer}
+          amount={value}
+          numberOfTransf={contacts.length}
+          onClose={this.closeModal}
+        />
       </>
     )
   }
