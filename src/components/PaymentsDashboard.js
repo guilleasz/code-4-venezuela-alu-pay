@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchContacts } from '../redux/actions/contacts'
 import { fetchCards } from '../redux/actions/cards'
-import { transfer } from '../redux/actions/transfer'
+import { transfer } from '../redux/actions/transfer'
 import s from './PaymentsDashboard.module.scss'
 
 const dictionary = {
@@ -26,6 +26,16 @@ class PaymentsDashboard extends React.Component {
   componentDidMount() {
     this.props.fetchContacts()
     this.props.fetchCards()
+  }
+
+  startTransfer = (cardId) => {
+    const { transfer, contacts } = this.props
+    const { value } = this.state 
+    const body = {
+      amount: value,
+      currency: 'USD',
+    }
+    transfer(contacts, body, cardId)
   }
 
   render() {
@@ -79,10 +89,10 @@ const mapStateToProps = (state, ownProps) => ({
   contacts: state.contacts[ownProps.match.params.type]
 })
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = {
   fetchContacts,
   fetchCards,
   transfer,
-})
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(PaymentsDashboard)
