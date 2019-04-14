@@ -16,11 +16,10 @@ class Home extends React.Component {
   const { token } = this.props;
   if (token) {
     return (
-      <div className="d-flex flex-column justify-content-between container-page">
-        <div className="mb-4 mt-4 container">
+      <>
           <Dashboard />
-        </div>
-      </div>
+      </>
+      
     );
   }
   return <Redirect to='/login' />;
