@@ -41,7 +41,7 @@ class ListActors extends React.Component {
                 Agregar Estudiantes
               </Button>
 
-            {contacts ? <List contacts={actors} /> : <Empty />}
+            {contacts ? <List contacts={contacts} /> : <Empty />}
           </div>
           </div>
         </div>

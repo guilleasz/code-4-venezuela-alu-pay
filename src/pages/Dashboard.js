@@ -8,9 +8,8 @@ function Dashboard(){
 
     return(
         <>     
-            <DashboardAmount/>
             <Header />
-
+            <DashboardAmount/>
                     <div className={styles.dashboardCTAWrapper}>
                         <div className={styles.dashboardCTA_align}>
                             <h1>REALIZAR TRANSFERENCIAS</h1>
