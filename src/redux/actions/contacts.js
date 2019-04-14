@@ -6,8 +6,9 @@ export const setContacts = contacts => ({
   contacts
 });
 
-export const createContactSucces = () => ({
-  type: CREATE_CONTACT
+export const createContactSucces = (contact) => ({
+  type: CREATE_CONTACT,
+  contact,
 });
 
 export const fetchContacts = () => dispatch => {
@@ -31,8 +32,8 @@ export const fetchContacts = () => dispatch => {
 export const createContact = body => dispatch => {
   return uphold
     .createContact(body)
-    .then(() => {
-      dispatch(createContactSucces());
+    .then((contact) => {
+      dispatch(createContactSucces(contact));
     })
     .catch(e => console.log(e));
 };
