@@ -5,6 +5,7 @@
   align-items: center;
   background-color: #fff;
   height: 500px;
+  border-radius: 10px;
 }
 
 .header {
@@ -60,13 +61,26 @@
   width: 290px;
 }
 
+.buttons {
+  display: flex;
+}
+
 .button {
   width: 180px;
   height: 60px;
+  border: none;
+  font-size: 24px;
+  font-size: 500;
+}
+
+.button.confirm {
+  border: 2px solid #386631;
   border-radius: 10px;
+  color: #386631
 }
 
 .warning {
   margin-bottom: 20px;
   font-size: 12px;
 }
+

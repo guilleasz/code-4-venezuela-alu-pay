@@ -27,14 +27,26 @@ class ConfirmTransaction extends Component {
       cardSelected: e.target.value
     })
   }
+  
 
   confirmTransaction = () => {
+    this.setState({ loading: true })
     this.props.transfer(this.state.cardSelected)
+      .then(() => {
+        this.setState({ loading: false, success: true })
+      })
+      .catch(() => {
+        this.setState({ loading: false, success: false })
+      })
+  }
+
+  cancelTransaction = () => {
+    this.props.close();
   }
 
   render() {
     const { numberOfTransf, amount, cards } = this.props;
-    const { cardSelected } = this.state;
+    const { cardSelected, success, loading } = this.state;
     return (
       <div className={s.container}>
         <div className={s.header}>REALIZAR TRANSFERENCIA</div>
@@ -78,8 +90,10 @@ class ConfirmTransaction extends Component {
         <div className={s.warning}>
           Advertencia: esta transferencia no puede ser revertida o deshacerse
         </div>
-
-        <button class={`${s.button} ${s.confirm}`} onClick={this.confirmTransaction}>confirm</button>
+        <div className={s.buttons}>
+          <button class={`${s.button} ${s.confirm}`} onClick={this.confirmTransaction}>Confirm</button>
+          <button class={s.button} onClick={this.cancelTransaction}>Cancel</button>
+        </div>
       </div>
     )
   }
