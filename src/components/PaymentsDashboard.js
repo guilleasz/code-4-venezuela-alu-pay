@@ -8,6 +8,9 @@ import Header from '../components/Header'
 import s from './PaymentsDashboard.module.scss'
 import styles from '../pages/Dashboard.module.css'
 import editIcon from '../components/icons/pencil.svg'
+import okIcon from '../components/icons/ok.svg'
+import cancelIcon from '../components/icons/cancel.svg'
+
 const dictionary = {
   students: 'estudiantes',
   professors: 'profesores'
@@ -22,7 +25,8 @@ class PaymentsDashboard extends React.Component {
 
   state = {
     value: values[this.props.match.params.type],
-    editValue: false
+    oldValue: values[this.props.match.params.type],
+    isEditing: false
   }
 
   componentDidMount() {
@@ -40,9 +44,35 @@ class PaymentsDashboard extends React.Component {
     transfer(contacts, body, cardId)
   }
 
+  editValue = () => {
+    this.setState({
+      isEditing: true
+    })
+  }
+
+  handleValueChange = (e) => {
+    this.setState({
+      value: e.target.value
+    })
+  }
+
+  confirmValue = () => {
+    this.setState({
+      isEditing: false,
+      oldValue: this.state.value
+    })
+  }
+
+  cancelValue = () => {
+    this.setState({
+      isEditing: false,
+      value: this.state.oldValue
+    })
+  }
+
   render() {
     const { match, contacts } = this.props
-    const { value, editValue } = this.state
+    const { value, isEditing } = this.state
     const entity = dictionary[match.params.type]
     return (
       <>
@@ -82,10 +112,14 @@ class PaymentsDashboard extends React.Component {
               </div>
               <div className={s.value}>
                 USD $
-                {!editValue ?
-                  <span className={s.editValue}>{value} <img src={editIcon} alt="Edit Icon"/></span>
+                {!isEditing ?
+                  <span className={s.editValue}>{value} <img onClick={this.editValue} src={editIcon} alt="Edit Icon"/></span>
                 :
-                  <input className={s.editValueInput} value={value} />
+                  <span>
+                    <input className={s.editValueInput} value={value} onChange={this.handleValueChange} />
+                    <img src={okIcon} onClick={this.confirmValue} alt="Accept Value" />
+                    <img src={cancelIcon} onClick={this.cancelValue} alt="Cancel Value" />
+                  </span>
                 }
               </div>
   
@@ -97,7 +131,7 @@ class PaymentsDashboard extends React.Component {
               <div className={s.value}>${contacts.length * value} USD</div>
             </div>
             <div className={s.controller}>
-              <button className={s.transfer}>Transferir</button> 
+              <button disabled={isEditing} className={s.transfer}>Transferir</button> 
             </div>
           </div>
         </div>
