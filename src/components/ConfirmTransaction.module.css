@@ -1,0 +1,86 @@
+.container {
+  width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  height: 500px;
+  border-radius: 10px;
+}
+
+.header {
+  font-size: 18px;
+  margin: 30px;
+  font-weight: 500;
+}
+
+.amount {
+  margin-bottom: 20px;
+  color: #386631;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.about {
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  width: 310px;
+}
+
+.info {
+  margin: 12px 23px;
+}
+
+.info p {
+  display: inline-block;
+  width: 180px;
+  margin: 0;
+}
+
+.info span {
+  font-weight: 500;
+}
+
+.cardSelection {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 30px;
+}
+
+.cardSelection label {
+  padding: 10px;
+}
+
+.cardSelection .dropdown {
+  width: 290px;
+  color: green;
+}
+
+.cardSelection .dropdown option {
+  text-align: right;
+  width: 290px;
+}
+
+.buttons {
+  display: flex;
+}
+
+.button {
+  width: 180px;
+  height: 60px;
+  border: none;
+  font-size: 24px;
+  font-size: 500;
+}
+
+.button.confirm {
+  border: 2px solid #386631;
+  border-radius: 10px;
+  color: #386631
+}
+
+.warning {
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+

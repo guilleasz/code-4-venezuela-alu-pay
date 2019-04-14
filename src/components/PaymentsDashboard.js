@@ -8,6 +8,8 @@ import Header from '../components/Header'
 import s from './PaymentsDashboard.module.scss'
 import styles from '../pages/Dashboard.module.css'
 import editIcon from '../components/icons/pencil.svg'
+import ModalComponent from './ModalComponent'
+import ConfirmTransaction from './ConfirmTransaction'
 import okIcon from '../components/icons/ok.svg'
 import cancelIcon from '../components/icons/cancel.svg'
 
@@ -25,6 +27,8 @@ class PaymentsDashboard extends React.Component {
 
   state = {
     value: values[this.props.match.params.type],
+    editValue: false,
+    openModal: false,
     oldValue: values[this.props.match.params.type],
     isEditing: false
   }
@@ -41,7 +45,20 @@ class PaymentsDashboard extends React.Component {
       amount: value,
       currency: 'USD',
     }
-    transfer(contacts, body, cardId)
+
+    return transfer(contacts, body, cardId)
+  }
+
+  openModal = () => {
+    this.setState({
+      openModal: true
+    })
+  }
+
+  closeModal = () => {
+    this.setState({
+      openModal: false
+    })
   }
 
   editValue = () => {
@@ -72,7 +89,7 @@ class PaymentsDashboard extends React.Component {
 
   render() {
     const { match, contacts } = this.props
-    const { value, isEditing } = this.state
+    const { value, isEditing, openModal } = this.state
     const entity = dictionary[match.params.type]
     return (
       <>
@@ -131,10 +148,24 @@ class PaymentsDashboard extends React.Component {
               <div className={s.value}>${contacts.length * value} USD</div>
             </div>
             <div className={s.controller}>
-              <button disabled={isEditing} className={s.transfer}>Transferir</button> 
+              <button
+                disabled={isEditing}
+                onClick={this.openModal}
+                className={s.transfer}
+              >
+                Transferir
+              </button> 
             </div>
           </div>
         </div>
+        <ModalComponent
+          open={openModal}
+          component={ConfirmTransaction}
+          transfer={this.startTransfer}
+          amount={value}
+          numberOfTransf={contacts.length}
+          close={this.closeModal}
+        />
       </>
     )
   }
