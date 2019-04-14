@@ -1,9 +1,10 @@
 const express = require('express')
+const { api } = require('../config/axios')
 
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  axios.get('/me/contacts')
+  api.get('/me/contacts')
     .then(({ data }) => {
       const contactsList = data.reduce((lists, contact) => {
         const contactType = contact.company.toLowerCase();
@@ -26,7 +27,7 @@ router.post('/', (req, res) => {
     return res.status(403).send('Required params missing')
   }
 
-  axios.post('/me/contacts', req.body)
+  api.post('/me/contacts', req.body)
     .then(({ data }) => res.status(201).send(data))
     .catch(() => res.sendStatus(500))
 })

@@ -1,7 +1,7 @@
-import Login from "./Login";
 import Home from "./Home";
-import ListStudents from "./ListStudents";
+import ListActors from "./ListActors";
 import Payments from "./Payments";
 import NotFound from "./NotFound";
+import Dashboard from "./Dashboard";
 
-export { Login, Home, ListStudents, Payments, NotFound };
+export { Home, ListActors, Payments, NotFound, Dashboard };
