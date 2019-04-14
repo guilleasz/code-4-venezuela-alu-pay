@@ -3,8 +3,6 @@ import { connect } from "react-redux";
 import { Button } from "reactstrap";
 import { List, Empty, AddContact, ModalComponent } from "../components";
 
-const actors = ["Juan", "Pedro", "Luis", "Facu"];
-
 class ListActors extends React.Component {
   constructor(props) {
     super(props);
@@ -19,8 +17,8 @@ class ListActors extends React.Component {
       modal: !this.state.modal
     });
   };
-
   render() {
+    const { contacs } = this.props;
     return this.state.modal ? (
       <ModalComponent
         open={this.state.modal}
@@ -31,20 +29,20 @@ class ListActors extends React.Component {
       <div className="d-flex flex-column justify-content-between container-page">
         <div className="mb-4 mt-4 container">
           <div className="d-flex justify-content-between mt-4">
-            <p class="h4">Listado Estudiantes</p>
+            <p className="h4">Listado Estudiantes</p>
             <Button onClick={this.toggleModal} color="info">
               Agregar Estudiantes
             </Button>
           </div>
-          {actors ? <List actors={actors} /> : <Empty />}
+          {contacs ? <List actors={contacs} /> : <Empty />}
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  actores: state.contacts
+const mapStateToProps = (state, ownProps) => ({
+  contacs: state.contacts[ownProps.match.params.type]
 });
 
 export default connect(mapStateToProps)(ListActors);

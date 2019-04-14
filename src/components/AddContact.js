@@ -4,14 +4,16 @@ import {
   TextInput,
   SelectGroup
 } from "react-bootstrap4-form-validation";
+import { connect } from "react-redux";
 import validator from "validator";
+import { createContact, fetchContacts } from "../redux/actions/contacts";
 
-export default class AddContact extends Component {
+class AddContact extends Component {
   state = {
     firstName: "",
     lastName: "",
     company: "",
-    email: ""
+    emails: ""
   };
 
   handleChange = e => {
@@ -22,12 +24,23 @@ export default class AddContact extends Component {
 
   handleSubmit = (e, formData, inputs) => {
     e.preventDefault();
-    // TODO: send request
+    const contact = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      company: this.state.company,
+      emails: [this.state.email]
+    };
+    this.props.createContact(contact);
+    this.props.close();
   };
 
   handleErrorSubmit = (e, formData, errorInputs) => {
     console.error(errorInputs);
   };
+
+  componentDidMount() {
+    this.props.fetchContacts();
+  }
 
   render() {
     return (
@@ -36,7 +49,7 @@ export default class AddContact extends Component {
           onSubmit={this.handleSubmit}
           onErrorSubmit={this.handleErrorSubmit}>
           <div className="form-group">
-            <label htmlFor="firstName">First name</label>
+            <label htmlFor="firstName">Nombre</label>
             <TextInput
               name="firstName"
               id="firstName"
@@ -46,7 +59,7 @@ export default class AddContact extends Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="lastName">Last name</label>
+            <label htmlFor="lastName">Apellido</label>
             <TextInput
               name="lastName"
               id="lastName"
@@ -56,7 +69,7 @@ export default class AddContact extends Component {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="company">Company</label>
+            <label htmlFor="company">Rol</label>
             <SelectGroup
               name="company"
               id="company"
@@ -65,8 +78,8 @@ export default class AddContact extends Component {
               errorMessage="Please select a company."
               onChange={this.handleChange}>
               <option value="">--- Please select ---</option>
-              <option value="teacher">Teacher</option>
-              <option value="student">Student</option>
+              <option value="professors">Profesor</option>
+              <option value="students">Estudiante</option>
             </SelectGroup>
           </div>
           <div className="form-group">
@@ -82,10 +95,20 @@ export default class AddContact extends Component {
             />
           </div>
           <div className="form-group">
-            <button className="btn btn-primary">Add Contact</button>
+            <button className="btn btn-primary">Agregar Contacto</button>
           </div>
         </ValidationForm>
       </div>
     );
   }
 }
+
+const mapDispatchToProps = {
+  createContact,
+  fetchContacts
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(AddContact);
