@@ -47,6 +47,25 @@ class ConfirmTransaction extends Component {
   render() {
     const { numberOfTransf, amount, cards } = this.props;
     const { cardSelected, success, loading } = this.state;
+    if (success) {
+      return (
+        <div className={s.container}>
+          <div className={s.header}>TRANSFERENCIA REALIZADA</div>
+          <div className={s.amount}>
+            USD $ {parseFloat(numberOfTransf * amount).toLocaleString('es')}
+          </div>
+          <div className={`${s.about} ${s.box}`}>
+            Para: <span>Estudiantes</span>
+          </div>
+
+          <div className={s.warning}>
+            Fecha y hora: {Date()}
+          </div>
+
+          <button className={`${s.button} ${s.confirm} ${s.single}`} onClick={this.cancelTransaction}>Listo</button>
+        </div>
+      )
+    }
     return (
       <div className={s.container}>
         <div className={s.header}>REALIZAR TRANSFERENCIA</div>

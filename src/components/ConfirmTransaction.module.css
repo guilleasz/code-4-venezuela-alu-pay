@@ -47,6 +47,11 @@
   margin: 50px 30px;
 }
 
+.box {
+  margin: 20px;
+  padding: 10px;
+}
+
 .cardSelection label {
   padding: 10px;
 }
@@ -77,6 +82,10 @@
   border: 2px solid #386631;
   border-radius: 10px;
   color: #386631
+}
+
+.button.confirm.single {
+  width: 310px;
 }
 
 .warning {
