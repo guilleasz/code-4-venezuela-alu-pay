@@ -34,7 +34,7 @@ class ListActors extends React.Component {
         <div className={s.container}>
          <div className={s.align}>
          <h1>VOLVER A LA TRANSFERENCIA</h1>
-         <button>ESTUDIANTES</button>
+         <button className={s.btn}>ESTUDIANTES</button>
           <input type="text"/> search
          <div>
               <Button onClick={this.toggleModal} color="info">
