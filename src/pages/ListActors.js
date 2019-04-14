@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Button } from "reactstrap";
 import { List, Empty, AddContact, ModalComponent } from "../components";
+import { fetchContacts } from '../redux/actions/contacts'
 
 class ListActors extends React.Component {
   constructor(props) {
@@ -11,6 +12,10 @@ class ListActors extends React.Component {
     };
   }
 
+  componentDidMount(){
+    this.props.fetchContacts()
+  }
+
   toggleModal = () => {
     this.setState({
       ...this.state,
@@ -18,7 +23,8 @@ class ListActors extends React.Component {
     });
   };
   render() {
-    const { contacs } = this.props;
+    const { contacts } = this.props;
+    console.log(contacts)
     return this.state.modal ? (
       <ModalComponent
         open={this.state.modal}
@@ -34,7 +40,7 @@ class ListActors extends React.Component {
               Agregar Estudiantes
             </Button>
           </div>
-          {contacs ? <List actors={contacs} /> : <Empty />}
+          {contacts ? <List actors={contacts} /> : <Empty />}
         </div>
       </div>
     );
@@ -42,7 +48,7 @@ class ListActors extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  contacs: state.contacts[ownProps.match.params.type]
+  contacts: state.contacts[ownProps.match.params.type]
 });
 
-export default connect(mapStateToProps)(ListActors);
+export default connect(mapStateToProps, { fetchContacts })(ListActors);

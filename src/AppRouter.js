@@ -12,7 +12,7 @@ class AppRouter extends React.Component {
           <Route exact path="/" component={Home} />
           <Route path='/login' component={Login} />
           <PrivateRoute path="/payments" component={Payments} />
-          <PrivateRoute path="/list/:rol" component={ListActors} />
+          <PrivateRoute path="/list/:type" component={ListActors} />
           <Route component={NotFound} />
         </Switch>
       </Router>

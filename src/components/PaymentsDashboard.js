@@ -94,22 +94,6 @@ class PaymentsDashboard extends React.Component {
     return (
       <>
        <Header />
-         <div className={styles.dashboardContainer}>
-             <div className={styles.dashboardAmountContainer}>
-                 <div className={styles.dashboardAmount}>
-                     <span>SALDO TOTAL</span>
-                   <span>USD $15.00 </span>
-                 </div>
-                 <div className={styles.dashboardAmount}>
-                     <span>SALDO DISPONIBLE</span>
-                   <span>USD $10.00 </span>
-                 </div>
-                 <div className={styles.dashboardAmount}>
-                     <span>SALDO PENDIENTE</span>
-                        <span>USD $5.00 </span>
-                 </div> 
-            </div>
-          </div>
         <div className={s.container}>
           <h1 className={s.title}>REALIZAR TRANSFERENCIAS</h1>
           <div className={s.subHeader}>

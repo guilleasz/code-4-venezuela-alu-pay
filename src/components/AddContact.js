@@ -13,7 +13,7 @@ class AddContact extends Component {
     firstName: "",
     lastName: "",
     company: "",
-    emails: ""
+    email: ""
   };
 
   handleChange = e => {

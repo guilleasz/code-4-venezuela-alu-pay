@@ -7,10 +7,11 @@ const List = props => {
   return (
     <ListGroup>
       {actors.map(actor => (
-        <ListGroupItem>{actor}</ListGroupItem>
+        <ListGroupItem key={actor.id}>{actor.name}</ListGroupItem>
       ))}
     </ListGroup>
   );
 };
+
 
 export default List;
