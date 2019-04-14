@@ -7,6 +7,11 @@ export const setLogin = isLoggedIn => ({
   isLoggedIn
 });
 
+export const logout = () => dispatch => {
+  dispatch(setUser());
+  dispatch(setLogin(false));
+};
+
 export const authenticate = code => dispatch => {
   if (code) {
     return uphold
