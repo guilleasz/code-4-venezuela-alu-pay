@@ -1,5 +1,4 @@
 .HeaderContainer {
-    padding: 2rem;
     height: 90px;
     background-color: #ffffff;
 }
@@ -8,6 +7,9 @@
     justify-content: flex-end;
     width: 80%;
 }
+.AdminTitleRight {
+    font-weight: 600;
+}
 .AdminTitleLeft {
     padding-left: 2rem;
     align-self: flex-start;
@@ -15,6 +17,7 @@
 }
 .AdminTitle{
     display: flex;
+    align-items: center;
 }
 .AdminTitleRight > span {
     padding-left: 2rem;

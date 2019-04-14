@@ -1,13 +1,13 @@
 import React from 'react';
 import styles from './Header.module.css'
-
+import logo from '../logo.jpg'
 function DashboardHeader(){
 
     return(     
             <header className={styles.HeaderContainer}>
                 <div className={styles.AdminTitle}>
                     <div className={styles.AdminTitleLeft}>
-                        <span>Alumn USB logo</span>
+                        <img src={logo}alt="Alumn USB" height="90px" widht="90px"/>
                     </div>
                     <div className={styles.AdminTitleRight}>
                             <span>
