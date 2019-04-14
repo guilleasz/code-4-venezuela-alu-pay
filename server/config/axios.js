@@ -6,6 +6,12 @@ exports.api = axios.create({
 })
 
 exports.setHeaders = function (req, res, next) {
-  exports.api.defaults.headers.Authorization = req.headers.Authorization
+  console.log('AUTH', req.headers.authorization)
+  exports.api.defaults.headers.Authorization = req.headers.authorization || ''
   next()
 }
+
+exports.api.interceptors.response.use(res => {
+  console.log('request', res.request._header)
+  return res;
+}, error => Promise.reject(error));

@@ -1,14 +1,17 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux'
 import AppRouter from "./AppRouter";
+import { authenticate } from "./redux/actions/authentication";
 class App extends Component {
+
+  componentDidMount() {
+    this.props.authenticate()
+  }
 
   render() {
     return <AppRouter />;
   }
 
-  login = () => {
-    console.log("Login");
-  };
 }
 
-export default App;
+export default connect(null, { authenticate })(App);
