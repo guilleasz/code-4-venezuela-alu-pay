@@ -4,8 +4,8 @@ import styles from "./Login.module.css";
 import { Redirect } from "react-router-dom";
 
 
-const Login = ({ token }) => {
-  if (!token) {
+const Login = ({ isLoggedIn }) => {
+  if (!isLoggedIn) {
     return (
       <div className={styles.btnContainer}>
         <a href="http://localhost:3001/login"><button className={styles.btn}>Login</button></a>
@@ -15,8 +15,8 @@ const Login = ({ token }) => {
   return <Redirect to='/' /> 
 }
 
-const mapDispatchToProps = ({ token }) => ({
-  token
+const mapDispatchToProps = ({ isLoggedIn }) => ({
+  isLoggedIn
 })
 
 export default connect(mapDispatchToProps)(Login)
