@@ -2,7 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { Button } from "reactstrap";
 import { List, Empty, AddContact, ModalComponent } from "../components";
-
+import s from './ListActors.module.scss'
+import Header from '../components/Header'
 const actors = ["Juan", "Pedro", "Luis", "Facu"];
 
 class ListActors extends React.Component {
@@ -28,17 +29,23 @@ class ListActors extends React.Component {
         component={AddContact}
       />
     ) : (
-      <div className="d-flex flex-column justify-content-between container-page">
-        <div className="mb-4 mt-4 container">
-          <div className="d-flex justify-content-between mt-4">
-            <p class="h4">Listado Estudiantes</p>
-            <Button onClick={this.toggleModal} color="info">
-              Agregar Estudiantes
-            </Button>
+      <>
+      <Header/>
+        <div className={s.container}>
+         <div className={s.align}>
+         <h1>VOLVER A LA TRANSFERENCIA</h1>
+         <button>ESTUDIANTES</button>
+          <input type="text"/> search
+         <div>
+              <Button onClick={this.toggleModal} color="info">
+                Agregar Estudiantes
+              </Button>
+
+            {actors ? <List actors={actors} /> : <Empty />}
           </div>
-          {actors ? <List actors={actors} /> : <Empty />}
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }
