@@ -7,7 +7,6 @@ import { transfer } from '../redux/actions/transfer'
 import Header from '../components/Header'
 import s from './PaymentsDashboard.module.scss'
 import DashboardAmount from '../components/DashboardAmount'
-import styles from '../pages/Dashboard.module.css'
 import editIcon from '../components/icons/pencil.svg'
 const dictionary = {
   students: 'estudiantes',

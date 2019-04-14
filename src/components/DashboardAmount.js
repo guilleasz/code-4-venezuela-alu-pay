@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../pages/Dashboard.module.css'
+import styles from '../components/DashboardAmount.module.css'
 function DashboardAmount(){
     return(
         <div className={styles.dashboardContainer}>

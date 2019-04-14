@@ -1,42 +1,4 @@
 
-.dashboardContainer {
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: column;
-    width: 100vw;
-    padding: 3rem;
-    background-color: #f4f4f4;
-}
-.dashboardAmountContainer {
-    background-color: #386631;
-    height: 120px;
-    width: 75vw;
-    display:flex;
-    align-items: center;
-    justify-content: space-around;
-    color: #fff;
-    border-radius: 10px;
-}
-.dashboardAmount {
-    display:flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: space-evenly;
-    height: 60px;
-}
-.dashboardAmount:nth-child(2) > span:nth-child(1) {
-    font-size: 18px;
-    font-weight: 600;
-}
-.dashboardAmount:nth-child(2) > span:nth-child(2) {
-    font-size: 22px;
-    font-weight: 400;
-}
-.dashboardAmount > span:nth-child(3) {
-    font-size: 30px;
-    font-weight: 600;
-}
 .dashboardBtn {
     width: 378px;
     height: 120px;
