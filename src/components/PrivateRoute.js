@@ -3,13 +3,14 @@ import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
 class PrivateRoute extends React.Component {
+  
   render() {
-    const { component: Component, token, ...rest } = this.props;
+    const { component: Component, isLoggedIn, ...rest } = this.props;
     return (
       <Route
         {...rest}
         render={props =>
-          token ? (
+          isLoggedIn ? (
             <Component {...props} />
           ) : (
             <Redirect to={{ pathname: "/login", state: { from: props.location } }} />
@@ -20,8 +21,8 @@ class PrivateRoute extends React.Component {
   }
 }
 
-const mapStateToProps = ({ token }) => ({
-  token
+const mapStateToProps = ({ isLoggedIn }) => ({
+  isLoggedIn
 });
 
 export default connect(mapStateToProps)(PrivateRoute);

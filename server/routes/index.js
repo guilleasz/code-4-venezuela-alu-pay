@@ -1,4 +1,3 @@
-import uphold from "../uphold-sdk";
 const express = require("express");
 const router = express.Router();
 const contactsRoutes = require("./contacts");
@@ -16,16 +15,13 @@ router.get("/login", (req, res) => {
 router.get("/uphold/callback", async (req, res) => {
   const { code, state } = req.query;
 
-  const credentials = await uphold.authorize(code);
 
-  if (credentials && credentials.access_token) {
     res.redirect(
-      `http://localhost:3000/home?token=${credentials.access_token}`
+      `http://localhost:3000/?code=${code}`
     );
-  } else {
-    res.json({ error: true, errorMessage: "Error getting access-token" });
-  }
+  
 });
+
 
 router.get("/", (req, res) => res.send("Hellow World!"));
 router.use("/transactions", transactionsRoutes);
