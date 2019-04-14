@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/Header'
 import styles from './Dashboard.module.css'
+import { Link } from 'react-router-dom'
 
 function Dashboard(){
 
@@ -30,8 +31,8 @@ function Dashboard(){
                         <div className={styles.dashboardCTA_align}>
                             <h1>REALIZAR TRANSFERENCIAS</h1>
                             <div className={styles.dashboardCTA_align_row}>
-                                <button className={styles.dashboardBtn}>ESTUDIANTES</button>
-                                <button className={styles.dashboardBtn}>PROFESORES</button>
+                                <Link to='/payments/students' className={styles.dashboardBtn}>ESTUDIANTES</Link>
+                                <Link to='/payments/professors' className={styles.dashboardBtn}>PROFESORES</Link>
                             </div>
                         </div>
                     </div> 

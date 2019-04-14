@@ -49,8 +49,18 @@
     font-size: 26px;
     font-weight: 600;
     transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
 }
+
+.dashboardBtn:hover {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
 
 .dashboardBtn:nth-child(1) {
     background-color: hsl(23, 91%, 55%);
