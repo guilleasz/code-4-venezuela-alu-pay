@@ -1,38 +1,46 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Redirect } from 'react-router'
+import { Redirect} from 'react-router-dom'
 import Dashboard from "./Dashboard";
-import { setToken } from '../redux/actions/authentication'
+import { authenticate } from '../redux/actions/authentication'
 
 class Home extends React.Component {
 
+  state = { loading: true  }
+
   componentDidMount() {
-    const { location, setToken } = this.props
+    const { location, authenticate, history } = this.props
     const query = new URLSearchParams(location.search)
-    setToken(query.get('token'))
+    console.log('mounted', query.get('code'))
+    authenticate(query.get('code'))
+      .then(() =>  {
+        this.setState({ loading: false })
+        const newQuery = new URLSearchParams(location.search)
+        if (newQuery.get('code')) history.replace('/')
+      })
   }
 
   render(){
-  const { token } = this.props;
-  if (token) {
+    const { isLoggedIn } = this.props
+    if (this.state.loading) return null
     return (
-      <div className="d-flex flex-column justify-content-between container-page">
-        <div className="mb-4 mt-4 container">
-          <Dashboard />
+      isLoggedIn ?
+        <div className="d-flex flex-column justify-content-between container-page">
+          <div className="mb-4 mt-4 container">
+            <Dashboard />
+          </div>
         </div>
-      </div>
+      : <Redirect to='/login' />
     );
-  }
-  return <Redirect to='/login' />;
   }
 };
 
-const mapStateToProps = state => ({
-  token: state.token
+const mapStateToProps = ({ isLoggedIn }) => ({
+  isLoggedIn
 });
 
-const mapDispatchToProps = () => ({
-  setToken
+const mapDispatchToProps = (dispatch) => ({
+  authenticate: (code) => dispatch(authenticate(code))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
